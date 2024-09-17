@@ -4,8 +4,8 @@ import json
 from bs4 import BeautifulSoup
 
 # Here, we initialize our `FlarumUser` object. You can't do anything without this first:
-
-USER = FlarumUser(forum_url="YOUR FLARUM URL HERE")
+URL="YOUR FLARUM URL HERE"
+USER = FlarumUser(forum_url=URL)
 token = 'YOUR PUSHPLUS TOKEN'
 
 
@@ -63,5 +63,5 @@ def getPost():
     postInfo = USER.get_discussion_by_id(i.id)
     temp = postInfo.get_author('first_number')["data"]["attributes"]["username"]
     resultDict[str(i.id)] = [postInfo.title, postInfo["data"]["attributes"]["createdAt"],temp
-                        , postInfo["included"][0]["attributes"]["contentHtml"], "https://bbs.sstown.world/d/"+str(i.id)]
+                        , postInfo["included"][0]["attributes"]["contentHtml"], +URL+"/d/"+str(i.id)]
   return(resultDict)
